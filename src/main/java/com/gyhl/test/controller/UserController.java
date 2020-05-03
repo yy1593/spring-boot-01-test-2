@@ -1,6 +1,7 @@
 package com.gyhl.test.controller;
 
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -16,5 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test/user")
 public class UserController {
-
+  
+	@GetMapping
+	public Object testgitupnonotome() {
+		return null;
+	}
 }
