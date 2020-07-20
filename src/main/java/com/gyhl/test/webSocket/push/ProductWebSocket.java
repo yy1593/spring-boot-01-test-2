@@ -29,10 +29,10 @@ import org.springframework.stereotype.Component;
 public class ProductWebSocket {
  
     // 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
-    private static final AtomicInteger OnlineCount = new AtomicInteger(0);
- 
+    private static volatile  AtomicInteger OnlineCount = new AtomicInteger(0);
+   //原文是final  volatile
     // concurrent包的线程安全Set，用来存放每个客户端对应的ProductWebSocket对象。
-    private static CopyOnWriteArraySet<ProductWebSocket> webSocketSet = new CopyOnWriteArraySet<ProductWebSocket>();
+    private static volatile CopyOnWriteArraySet<ProductWebSocket> webSocketSet = new CopyOnWriteArraySet<ProductWebSocket>();
  
     // 与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
@@ -104,6 +104,9 @@ public class ProductWebSocket {
      */
     public static void sendInfo(String message) throws IOException {
         for (ProductWebSocket productWebSocket : webSocketSet) {
+        	System.err.println(webSocketSet.size());
+        	System.err.println(webSocketSet.hashCode());
+        	
             productWebSocket.sendMessage(message);
         }
     }

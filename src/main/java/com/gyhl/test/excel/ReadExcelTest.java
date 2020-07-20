@@ -18,7 +18,7 @@ public class ReadExcelTest {
 
         ReadExcelTest excelTest=new ReadExcelTest();
 
-        Workbook wb = excelTest.getExcel("D:\\学习\\中文.xlsx");
+        Workbook wb = excelTest.getExcel("C:\\Users\\wangna\\Desktop\\观点管线数据\\北京化一//SCL.xlsx");
 
         if(wb==null)
             System.out.println("文件读入出错");
